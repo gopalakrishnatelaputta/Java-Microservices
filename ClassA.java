@@ -1,53 +1,51 @@
-package encapsulation;
-
-import java.util.Scanner;
+package inheritance;
 
 public class ClassA 
 {
-	private String empName;
-	private int empID;
+	void meth1()
+	{
+		System.out.println("class A method");
 	
-	public String getempName() 
-	{
-		System.out.println("hi  :"+2);
-		return empName;
 	}
-	public void setempName(String empName)
-	{
-		System.out.println("hi :"+1);
-		this.empName=empName;
-	}
-	public int getempID() 
-	{
-		System.out.println("hi  :"+4);
-		return empID;
-	}
-	public void setempID(int empID)
-	{
-		System.out.println("hi :3"+3);
-		this.empID=empID;
-	}
-	
 
 }
- class ClassB 
+class ClassB extends ClassA
 {
-	void display()
+	void meth2()
 	{
-		Scanner sc=new Scanner (System.in);
-		ClassA obj=new ClassA();
-		System.out.println("please enter the name ");
-		obj.setempName(sc.next());
-		
-		System.out.println("Please enter your ID");
-		obj.setempID(sc.nextInt());
-		
-		
-	
-	System.out.println("empName  :"+obj.getempName());
-	System.out.println("empName  :"+obj.getempName());}
-	public static void main(String[] args)
-	{
-		new ClassB().display();	
+		System.out.println("ClassB method called");
 	}
+	public static void main(String[] args) 
+	{
+		ClassA obj=new ClassA();
+	     obj.meth1();
+	     //obj.meth2();// WE CANNOT ACCESS CHILD CLASS MEMBERS WITH PARENT CLASS OBJECT.	
+	
+     ClassA obj1=new ClassB();
+	obj1.meth1();
+	//obj1.meth2();//// WE CANNOT ACCESS CHILD CLASS MEMBERS WITH PARENT CLASS OBJECT REFERANCE.
+	
+	ClassB obj2=new ClassB();//we can access both parent and child class (PURE INHERITANCE)
+	obj2.meth1();
+	obj2.meth2();
+	
+	//ClassB obj3=new ClassA();  COMPILATION ERROR.
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
